@@ -13,6 +13,7 @@ def sigmoid(x):
     """
     ##############################
     ###     YOUR CODE HERE     ###
+    g = 1 / (1 + np.exp(-x))
     ##############################    
     return g
 
@@ -28,6 +29,12 @@ def softmax(y):
     """
     ##############################
     ###     YOUR CODE HERE     ###
+    # Stabilize by subtracting the max value in each row
+    y_shifted = y - np.max(y, axis=1, keepdims=True)
+    y_exp = np.exp(y_shifted)
+    
+    # Normalize and return mean probabilities
+    softmax_scores = y_exp / np.sum(y_exp, axis=1, keepdims=True)
     ##############################
     return softmax_scores
 

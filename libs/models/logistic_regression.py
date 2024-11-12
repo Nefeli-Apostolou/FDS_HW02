@@ -17,6 +17,7 @@ class LogisticRegression:
         """
         ##############################
         ###     YOUR CODE HERE     ###
+        preds = sigmoid(np.dot(x, self.parameters))
         ##############################
         return preds
     
@@ -34,6 +35,11 @@ class LogisticRegression:
         """
         ##############################
         ###     YOUR CODE HERE     ###
+        # Ensure preds and y are numpy arrays for element-wise operations
+        preds = np.array(preds)
+        y = np.array(y)
+        epsilon = 1e-15  # Small value to avoid log(0)
+        log_l = np.mean(y * np.log(preds + epsilon) + (1 - y) * np.log(1 - preds + epsilon))
         ##############################
         return log_l
     
@@ -68,6 +74,7 @@ class LogisticRegression:
         """
         ##############################
         ###     YOUR CODE HERE     ###
+        self.parameters -= lr * gradient
         ##############################
         return gradient
 
