@@ -4,4 +4,4 @@ This repository contains the second FDS homework project completed by:
 - Zaineb Ojayyan, 2182087
 - Geraldine ______, 1996887
 - Angelina _______, 2168055
-- Johanna _______, 2183564
+- Johanna Eklundh, 2183564
