@@ -36,10 +36,11 @@ class LogisticRegression:
         ##############################
         ###     YOUR CODE HERE     ###
         # Ensure preds and y are numpy arrays for element-wise operations
-        #preds = np.array(preds)
-        #y = np.array(y)
+        preds = np.array(preds)
+        y = np.array(y)
         epsilon = 1e-15  # Small value to avoid log(0)
-        log_l = np.mean(y * np.log(preds + epsilon) + (1 - y) * np.log(1 - preds + epsilon))
+        preds = np.clip(preds, epsilon, 1-epsilon)
+        log_l = np.mean(y * np.log(preds) + (1 - y) * np.log(1 - preds))
         ##############################
         return log_l
     
@@ -56,7 +57,7 @@ class LogisticRegression:
         """
         ##############################
         ###     YOUR CODE HERE     ###
-        self.parameters -= lr * gradient
+        self.parameters += lr * gradient
         ##############################
         pass
         
@@ -77,7 +78,7 @@ class LogisticRegression:
         ###     YOUR CODE HERE     ###
 
         # Calculate the gradient
-        gradient = np.dot(x.T, preds - y) / len(y)
+        gradient = np.dot(x.T, y- preds) / len(y)
         ##############################
         return gradient
 
