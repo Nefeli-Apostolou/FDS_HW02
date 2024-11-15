@@ -13,6 +13,7 @@ def sigmoid(x):
     """
     ##############################
     ###     YOUR CODE HERE     ###
+    g = 1/ (1 + np.exp(-x))
     ##############################    
     return g
 
@@ -28,6 +29,7 @@ def softmax(y):
     """
     ##############################
     ###     YOUR CODE HERE     ###
+    softmax_scores = 0
     ##############################
     return softmax_scores
 
