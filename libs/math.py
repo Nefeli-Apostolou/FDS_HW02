@@ -29,7 +29,8 @@ def softmax(y):
     """
     ##############################
     ###     YOUR CODE HERE     ###
-    softmax_scores = 0
+    exp_scores = np.exp(y - np.max(y, axis=1, keepdims=True))  # To avoid overflow
+    softmax_scores = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
     ##############################
     return softmax_scores
 
