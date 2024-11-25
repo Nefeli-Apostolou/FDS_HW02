@@ -29,8 +29,22 @@ def softmax(y):
     """
     ##############################
     ###     YOUR CODE HERE     ###
-    exp_scores = np.exp(y - np.max(y, axis=1, keepdims=True))  # To avoid overflow
-    softmax_scores = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
     ##############################
+    # Ensure no NaNs in input
+    if np.any(np.isnan(y)):
+        raise ValueError("Input to softmax contains NaNs")
+
+    # Shift the scores for numerical stability (subtract the max score in each row)
+    y_shifted = y - np.max(y, axis=1, keepdims=True)
+    
+    # Compute the exponential of the shifted scores
+    exp_scores = np.exp(y_shifted)
+    
+    # Check for any NaNs or infinities in the exponentiated scores
+    if np.any(np.isnan(exp_scores)) or np.any(np.isinf(exp_scores)):
+        raise ValueError("Exponentiation produced NaNs or infs")
+
+    # Normalize by dividing each row by the sum of its exponential scores
+    softmax_scores = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
     return softmax_scores
 

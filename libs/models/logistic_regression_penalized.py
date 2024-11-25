@@ -20,6 +20,7 @@ class LogisticRegressionPenalized(LogisticRegression):
         ##############################
         ###     YOUR CODE HERE     ###
         regularization_term = self.lambda_ * self.parameters  # L2 regularization term
+        regularization_term[0] = 0
         self.parameters += lr * (gradient - regularization_term)
         ##############################
         pass

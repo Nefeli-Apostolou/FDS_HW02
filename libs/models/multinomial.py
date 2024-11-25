@@ -56,7 +56,8 @@ class SoftmaxClassifier(LogisticRegression):
         ###     YOUR CODE HERE     ###
         # Clip preds to avoid log(0)
         preds = np.clip(preds, 1e-15, 1 - 1e-15)
-        loss = -np.mean(np.sum(y_onehot * np.log(preds), axis=1))
+        N = preds.shape[0]
+        loss = -np.sum(y_onehot * np.log(preds)) / N
         ##############################
         return loss
     
@@ -73,8 +74,13 @@ class SoftmaxClassifier(LogisticRegression):
         """
         ##############################
         ###     YOUR CODE HERE     ###
-        # Update the model's weights by subtracting the gradient scaled by the learning rate
-        self.theta -= lr * gradient
+        # Clip gradient to avoid large updates that might cause NaNs or infs
+        
+        
+        # Update the model's parameters (weights)
+        self.parameters -= lr * gradient # Correct update of weights
+        if np.any(np.isnan(gradient)):
+            raise ValueError("Input to softmax contains NaNs")
         ##############################
         pass
     
@@ -93,7 +99,8 @@ class SoftmaxClassifier(LogisticRegression):
         """
         ##############################
         ###     YOUR CODE HERE     ###
-        jacobian = np.dot(x.T, preds - y) / x.shape[0]
+        N = x.shape[0]
+        jacobian = np.dot(x.T, preds - y) / N
         ##############################
         return jacobian
     
