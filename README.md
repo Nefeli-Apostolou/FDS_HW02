@@ -7,21 +7,7 @@ This repository contains the second FDS homework project completed by:
 - Johanna Eklundh, 2183564
 
 # Project Structure #
-├── HW2.ipynb # main notebook 
-├── README.md
-├── assets
-    └── train.csv
-├── image.png
-└── libs
-    ├── math.py
-    ├── models
-        ├── __init__.py
-        ├── custom_cnn.py
-        ├── logistic_regression.py
-        ├── logistic_regression_penalized.py
-        ├── multinomial.py
-        └── poor_cnn.py
-    └── optim.py
+
     ![image](https://github.com/user-attachments/assets/c33f5982-c2c8-48df-bdab-df62858ac4bb)
 
 
