@@ -22,6 +22,8 @@ This repository contains the second FDS homework project completed by:
         ├── multinomial.py
         └── poor_cnn.py
     └── optim.py
+    ![image](https://github.com/user-attachments/assets/c33f5982-c2c8-48df-bdab-df62858ac4bb)
+
 
 
 # Table of Contents #
