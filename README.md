@@ -8,7 +8,8 @@ This repository contains the second FDS homework project completed by:
 
 # Project Structure #
 
-    ![image](https://github.com/user-attachments/assets/c33f5982-c2c8-48df-bdab-df62858ac4bb)
+    
+![image](https://github.com/user-attachments/assets/0610d0d4-7dcf-407a-bee1-5e8c69ff9c1e)
 
 
 
