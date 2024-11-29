@@ -19,6 +19,8 @@ class SoftmaxClassifier(LogisticRegression):
         """
         ##############################
         ###     YOUR CODE HERE     ###
+        scores = np.dot(X, self.parameters)
+        scores = softmax(scores)
         ##############################
         return scores
     
@@ -34,6 +36,8 @@ class SoftmaxClassifier(LogisticRegression):
         """
         ##############################
         ###     YOUR CODE HERE     ###
+        scores = self.predict(X)
+        preds = np.argmax(softmax(scores), axis=1)
         ##############################
         return preds
     
@@ -51,6 +55,8 @@ class SoftmaxClassifier(LogisticRegression):
         """
         ##############################
         ###     YOUR CODE HERE     ###
+        preds = np.clip(preds, 1e-15, 1 - 1e-15)
+        loss = -np.sum(y_onehot * np.log(preds)) / preds.shape[0]
         ##############################
         return loss
     
@@ -67,6 +73,7 @@ class SoftmaxClassifier(LogisticRegression):
         """
         ##############################
         ###     YOUR CODE HERE     ###
+        self.parameters -= lr * gradient
         ##############################
         pass
     
@@ -85,6 +92,8 @@ class SoftmaxClassifier(LogisticRegression):
         """
         ##############################
         ###     YOUR CODE HERE     ###
+        N = x.shape[0]
+        jacobian = np.dot(x.T, preds - y) / N
         ##############################
         return jacobian
     
