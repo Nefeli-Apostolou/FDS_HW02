@@ -29,7 +29,14 @@ def softmax(y):
     """
     ##############################
     ###     YOUR CODE HERE     ###
-    softmax_scores = 0
+    # Shift the scores for numerical stability (subtract the max score in each row)
+    y_shift = y - np.max(y, axis=1, keepdims=True)
+    
+    # Compute the exponential of the shifted scores
+    exp_scores = np.exp(y_shift)
+    
+    # Normalize by dividing each row by the sum of its exponential scores
+    softmax_scores = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
     ##############################
     return softmax_scores
 
