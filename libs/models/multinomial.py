@@ -20,6 +20,7 @@ class SoftmaxClassifier(LogisticRegression):
         ##############################
         ###     YOUR CODE HERE     ###
         scores = np.dot(X, self.parameters)
+        scores = softmax(scores)
         ##############################
         return scores
     
