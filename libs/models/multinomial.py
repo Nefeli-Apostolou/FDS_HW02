@@ -56,8 +56,7 @@ class SoftmaxClassifier(LogisticRegression):
         ##############################
         ###     YOUR CODE HERE     ###
         preds = np.clip(preds, 1e-15, 1 - 1e-15)
-        N = preds.shape[0]
-        loss = -np.sum(y_onehot * np.log(preds)) / N
+        loss = -np.sum(y_onehot * np.log(preds)) / preds.shape[0]
         ##############################
         return loss
     
